@@ -70,16 +70,23 @@ const User = ({ userData }: UserProps) => {
   }
 
   const repoList = nodes;
+  console.log(hasNextPage);
 
   return (
-    <div css={cssRepoWrapper}>
-      {repoList.map((repo) => (
-        <div css={cssSingleRepoWrapper} key={repo.id}>
-          <Repository repo={repo} />
+    <>
+      <div css={cssRepoWrapper}>
+        {repoList.map((repo) => (
+          <div css={cssSingleRepoWrapper} key={repo.id}>
+            <Repository repo={repo} />
+          </div>
+        ))}
+      </div>
+      {hasNextPage && (
+        <div ref={intersectRef}>
+          <Skeleton active />
         </div>
-      ))}
-      <div ref={intersectRef}>{hasNextPage && <Skeleton active />}</div>
-    </div>
+      )}
+    </>
   );
 };
 
