@@ -70,7 +70,6 @@ const User = ({ userData }: UserProps) => {
   }
 
   const repoList = nodes;
-  console.log(hasNextPage);
 
   return (
     <>
