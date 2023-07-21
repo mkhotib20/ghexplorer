@@ -1,0 +1,10 @@
+#import "./repositoryFragment.graphql"
+
+query getUserDetail($login: String!, $endCursor: String) {
+  detailData: user(login: $login) {
+    id
+    repositories(first: 10, after: $endCursor, orderBy: { field: CREATED_AT, direction: DESC }) {
+      ...repositories
+    }
+  }
+}

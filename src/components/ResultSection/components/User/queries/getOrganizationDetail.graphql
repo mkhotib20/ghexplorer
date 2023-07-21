@@ -1,0 +1,11 @@
+#import "./repositoryFragment.graphql"
+
+
+query getOrganizationDetail($login: String!, $endCursor: String) {
+  detailData: organization(login: $login) {
+    id
+    repositories(first: 10, after: $endCursor, orderBy: { field: CREATED_AT, direction: DESC }) {
+      ...repositories
+    }
+  }
+}

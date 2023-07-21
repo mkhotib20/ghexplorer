@@ -1,0 +1,24 @@
+query getUsers($keyword: String!) {
+  search(first: 5, query: $keyword, type: USER) {
+    edges {
+      node {
+        ...users
+        ...organizations
+      }
+    }
+  }
+}
+
+fragment users on User {
+  id
+  login
+  name
+  avatarUrl
+}
+
+fragment organizations on Organization {
+  id
+  login
+  name
+  avatarUrl
+}

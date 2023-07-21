@@ -1,0 +1,23 @@
+fragment repositories on RepositoryConnection {
+  pageInfo {
+    hasNextPage
+    endCursor
+  }
+  nodes {
+    id
+    name
+    description
+    stargazers {
+      totalCount
+    }
+    url
+    languages(first: 3) {
+      edges {
+        node {
+          color
+          name
+        }
+      }
+    }
+  }
+}
