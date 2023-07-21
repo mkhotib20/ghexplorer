@@ -39,7 +39,9 @@ export default class AppDocument extends Document {
         ),
       });
     const initialProps = await Document.getInitialProps(ctx);
-    initialProps.styles.push(...extractStyle(antdCache));
+    if (Array.isArray(initialProps.styles)) {
+      initialProps.styles.push(...extractStyle(antdCache));
+    }
     return initialProps;
   }
 
